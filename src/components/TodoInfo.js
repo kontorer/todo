@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import {useParams} from "react-router-dom"
 
 import todosData from "../todosData"
@@ -8,13 +8,12 @@ function TodoInfo() {
 	const {elId} = useParams()
 	console.log(elId)
 	const {title, description, deadline, performer} = todosData.find(el => el.id == elId)
+
+
 	return (
 		<div>
-			<p>todo info here</p>
-			<h2>{title}</h2>
-			<p>{description}</p>
-			<p>{deadline}</p>
-			<Form title={title} description={description} performer={performer}/>
+			<h1>Task details</h1>
+			<Form title={title} description={description} performer={performer} />
 		</div>
 	)
 }

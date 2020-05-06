@@ -7,14 +7,16 @@ function Form(props) {
 
 	useEffect(() => {
 		props.status == "new" && inputField.current.focus()
-	}, [])
+		setTitle(props.title)
+		setDescription(props.description)
+	}, [props.title])
 
 	function handleSubmit(e) {
 		e.preventDefault()
 		alert(title)
 	}
 	return (
-		<form id="form">
+		<form id="form" className={props.status}>
 			<input type="text" 
 				value={title} 
 				onChange={e => setTitle(e.target.value)} 
@@ -26,12 +28,13 @@ function Form(props) {
 			<br />
 			<textarea value={description}
 				onChange={e => setDescription(e.target.value)}
-				placeholder="Describe your task" />
+				placeholder="Describe your task" 
+				rows="15"/>
 			<ul>
 				<li style={{display: "inline-flex"}}>add deadline</li><span>  </span>
 				<li style={{display: "inline-flex"}}>{props.performer ? props.performer : "add performer"}</li>
 			</ul>
-			<button onClick={handleSubmit}>add</button>
+			{props.status && <button onClick={handleSubmit}>Create</button>}
 		</form>
 	)
 }

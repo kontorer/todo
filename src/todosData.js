@@ -14,7 +14,7 @@ const todosData = [
         status: "done",
         description: "This is todos descr",
         deadline: "time",
-        performer: "Olina",
+        performer: "Natasha",
         performerInfo: "me@gmail.com"
     },
     {
@@ -23,7 +23,7 @@ const todosData = [
         status: "new",
         description: "This is todos descr",
         deadline: "time",
-        performer: "Olina",
+        performer: "Max",
         performerInfo: "me@gmail.com"
     },
     {
@@ -32,7 +32,7 @@ const todosData = [
         status: "hot",
         description: "This is todos descr",
         deadline: "time",
-        performer: "Olina",
+        performer: "Oksana",
         performerInfo: "me@gmail.com"
     },
     {
@@ -41,7 +41,7 @@ const todosData = [
         status: "new",
         description: "This is todos descr",
         deadline: "time",
-        performer: "Olina",
+        performer: "Kusya",
         performerInfo: "me@gmail.com"
     }
 ]

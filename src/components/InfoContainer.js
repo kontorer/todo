@@ -8,19 +8,19 @@ function InfoContainer() {
 	return (
 		<div className={"container"}>
 			<div>
-				<Link to="/1">1 </Link>
-				<Link to="/2">2 </Link>
-				<Link to="/3">3</Link>
+				<Link to="/1">Фича1 </Link>
+				<Link to="/2">Фича2 </Link>
+				<Link to="/3">Фича3</Link>
 			</div>
 			<Switch>
 				<Route path="/1">
-					<p>1elem</p>
+					<h1>Календарь?</h1>
 				</Route>
 				<Route path="/2">
-					<p>2elem</p>
+					<h1>Не помню шо еще</h1>
 				</Route>
 				<Route path="/3">
-					<p>3elem</p>
+					<h1>И еще Заметки</h1>
 				</Route>
 				<Route path="/todo/:elId">
 					<TodoInfo />
