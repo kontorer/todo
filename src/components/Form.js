@@ -10,7 +10,8 @@ function Form(props) {
 	useEffect(() => {
 		props.status == "new" && inputField.current.focus()
 		return () => {
-			props.status == "new" && console.log("unmounting", title)
+			props.status != "new" && updateDB(id)
+			console.log("unmounting", id)
 		}
 	}, [id])
 

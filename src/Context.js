@@ -8,8 +8,7 @@ const Context = React.createContext()
 const axios = require('axios')
 
 function ContextProvider(props) {
-	const [items, setItems] = useState(todosData)
-	const [uploaded, setUploaded] = useState(false)
+	const [items, setItems] = useState([])
 	const [ignored, forceUpdate] = useReducer(x => x + 1, 0)
 	const history = useHistory()
 
@@ -18,6 +17,7 @@ function ContextProvider(props) {
 		    .then(resp => {
 		        const data = resp.data
 		        setItems(data)
+		        console.log("connected")
 		    })
 		    .catch(error => {
 		        console.log(error)
@@ -29,7 +29,7 @@ function ContextProvider(props) {
 		e.preventDefault()
 		console.log("addingItem")
 		const task = items.find(el => el.id == "new")
-		task.id = items.length + 1 
+		task.id = items.length 
 		items.push({   
 	        "id": "new",
 	        "title": "",
@@ -40,6 +40,12 @@ function ContextProvider(props) {
 	        "performer": "Olina",
 	        "performerInfo": "me@gmail.com"
 	    }) 
+	    axios.post('http://localhost:3001/todosDB', task)
+	    	.then(resp => {
+		    	console.log(resp.data)
+			}).catch(error => {
+		    	console.log(error)
+			})
 	    forceUpdate()
 	    history.push(`/todo/${task.id}`)
 	    console.log(items)
@@ -84,26 +90,22 @@ function ContextProvider(props) {
 		setItems(upd)
 	}
 
-	function updateDB(e) {
-		axios.put('http://localhost:3001/todosDB/', items)
+	function updateDB(id) {
+		const putt = items.find(el => el.id == id)
+		axios.put(`http://localhost:3001/todosDB/${id}`, putt)
 			.then(resp => {
-		    	console.log(resp.data)
-		    	setUploaded(true)
-			})
-			.catch(error => {
-		    	console.log(error)
-			})
+			    console.log(resp.data)
+			}).catch(error => {
+
+			    console.log(error)
+			}); 
 	}
 
 	return (
-		<Context.Provider value={{items, addItem, editItem, deleteItem, flipDone, flipHot, uploaded, updateDB}}>
+		<Context.Provider value={{items, addItem, editItem, deleteItem, flipDone, flipHot, updateDB}}>
 			{props.children}
 		</Context.Provider>
 	)
 }
 
 export {ContextProvider, Context}
-
-
-
-

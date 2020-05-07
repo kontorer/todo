@@ -8,7 +8,7 @@ import {Context} from "../Context"
 
 function Main() {
 	const {uploaded, updateDB} = useContext(Context)
-	usePreventWindowUnload(true, updateDB)
+	// usePreventWindowUnload(true, updateDB)
 	return (
 		<main>
 			<TodosContainer />
