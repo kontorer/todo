@@ -1,31 +1,23 @@
-import React, {useState, useContext} from "react"
+import React, {useContext} from "react"
 import {Link} from "react-router-dom"
 
 import {Context} from "../Context"
 
 function TodoItem(props) {
-	const {items} = useContext(Context)
-	const [status, setStatus] = useState(props.status)
-	const enteringStat = props.status
+	const {items, flipDone} = useContext(Context)
 
-	const {id, title, description, deadline, performer} = items.find(el => el.id == props.id)
-	
-	function flip() {
-		status == "done" ?
-		setStatus(enteringStat == "done" ? "new" : enteringStat) :
-		setStatus("done")
-	}
+	const {id, title, description, deadline, performer, isDone} = items.find(el => el.id == props.id)
 
 	return (
 		<div className={"flex"}>
-			<div className={`elem ${status}`}>
-				{status == "done" ? 
-					<input type="checkbox" checked onChange={flip} /> : 
-					<input type="checkbox" onChange={flip} />
+			<div className={`elem ${isDone && "done"}`}>
+				{isDone == true ? 
+					<input type="checkbox" checked onChange={() => flipDone(id)} /> : 
+					<input type="checkbox" onChange={() => flipDone(id)} />
 				}
 				<p>{title}</p>
 			</div>
-			<div><Link to={`/todo/${id}`}><i class="ri-information-line"></i></Link></div>	
+			<div><Link to={`/todo/${id}`}><i className="ri-information-line"></i></Link></div>	
 		</div>
 	)
 }

@@ -1,43 +1,59 @@
-import React, {useState, useRef, useEffect} from "react"
+import React, {useState, useRef, useEffect, useContext} from "react"
+
+import {Context} from "../Context"
 
 function Form(props) {
-	const [title, setTitle] = useState(props.title)
-	const [description, setDescription] = useState(props.description)
 	const inputField = useRef(null)
+	const {id, title, description, deadline, performer, performerInfo, isDone, isHot} = props.task
+	const {editItem, flipHot, flipDone, updateDB} = useContext(Context)
 
 	useEffect(() => {
 		props.status == "new" && inputField.current.focus()
-		setTitle(props.title)
-		setDescription(props.description)
-	}, [props.title])
+		return () => {
+			props.status == "new" && console.log("unmounting", title)
+		}
+	}, [id])
 
 	function handleSubmit(e) {
 		e.preventDefault()
 		alert(title)
 	}
+
+	console.log(id || props.status)
+
 	return (
 		<form id="form" className={props.status}>
 			<input type="text" 
 				value={title} 
-				onChange={e => setTitle(e.target.value)} 
+				name="title"
+				onChange={e => editItem(e, (id || props.status))} 
 				ref={inputField}
 			/>
+
 			<label>
-				<input type="checkbox" />hot
+				{isHot ? 
+					<input type="checkbox" onChange={e => flipHot((id || props.status))} checked /> : 
+					<input type="checkbox" onChange={e => flipHot((id || props.status))} /> }
+				hot
 			</label>
 			<br />
+
 			<textarea value={description}
-				onChange={e => setDescription(e.target.value)}
+				name="description"
+				onChange={e => editItem(e, (id || props.status))} 
 				placeholder="Describe your task" 
-				rows="15"/>
+				rows="15"
+			/>
+
 			<ul>
 				<li style={{display: "inline-flex"}}>add deadline</li><span>  </span>
-				<li style={{display: "inline-flex"}}>{props.performer ? props.performer : "add performer"}</li>
+				<li style={{display: "inline-flex"}}>{performer ? performer : "add performer"}</li>
 			</ul>
-			{props.status && <button onClick={handleSubmit}>Create</button>}
+			{props.addItem && <button onClick={e => props.addItem(e)}>Create</button>}
 		</form>
 	)
 }
+
 
 // 			id: 2, 									auto timestamp 				auto
 //         title: "Grocery shopping",				input 						default

@@ -1,19 +1,25 @@
-import React, {useState, useEffect} from "react"
+import React, {useEffect, useContext} from "react"
 import {useParams} from "react-router-dom"
 
-import todosData from "../todosData"
+import {Context} from "../Context"
 import Form from "./Form"
 
 function TodoInfo() {
 	const {elId} = useParams()
-	console.log(elId)
-	const {title, description, deadline, performer} = todosData.find(el => el.id == elId)
+	const {items} = useContext(Context)
 
+	function form(){
+		const a = items.find(el => el.id == elId)
+		if(typeof a == "object"){			
+			const {id, title, description, deadline, performer} = a
+			return <Form task={a} />
+		}
+	}
 
 	return (
 		<div>
 			<h1>Task details</h1>
-			<Form title={title} description={description} performer={performer} />
+			{form()}
 		</div>
 	)
 }

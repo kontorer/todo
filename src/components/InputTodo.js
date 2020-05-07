@@ -1,12 +1,14 @@
-import React, {useState} from "react"
+import React, {useContext} from "react"
 
+import {Context} from "../Context"
 import Form from "./Form"
 
 function InputTodo() {
+	const {addItem} = useContext(Context)
 	return (
 		<div>
 			<h2>Add a new task!</h2>
-			<Form status="new" />
+			<Form status="new" addItem={addItem} task={{}}/>
 		</div>
 	)
 }
