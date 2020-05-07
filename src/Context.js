@@ -1,15 +1,15 @@
 import React, {useState, useEffect, useReducer} from "react"
 import {useHistory} from "react-router-dom"
 	
-
+// json-server --watch todosDB.json --port 3001
 import todosData from "./todosData"
 
 const Context = React.createContext()
 const axios = require('axios')
 
 function ContextProvider(props) {
-	const [items, setItems] = useState([])
-	const [loading, setLoading] = useState(true)
+	const [items, setItems] = useState(todosData)
+	const [uploaded, setUploaded] = useState(false)
 	const [ignored, forceUpdate] = useReducer(x => x + 1, 0)
 	const history = useHistory()
 
@@ -19,7 +19,6 @@ function ContextProvider(props) {
 		        const data = resp.data
 		        setItems(data)
 		    })
-		    .then(setLoading(false))
 		    .catch(error => {
 		        console.log(error)
 		        setItems(todosData)
@@ -86,14 +85,25 @@ function ContextProvider(props) {
 	}
 
 	function updateDB(e) {
-		console.log(items)
+		axios.put('http://localhost:3001/todosDB/', items)
+			.then(resp => {
+		    	console.log(resp.data)
+		    	setUploaded(true)
+			})
+			.catch(error => {
+		    	console.log(error)
+			})
 	}
 
 	return (
-		<Context.Provider value={{items, addItem, editItem, deleteItem, flipDone, flipHot, loading, updateDB}}>
+		<Context.Provider value={{items, addItem, editItem, deleteItem, flipDone, flipHot, uploaded, updateDB}}>
 			{props.children}
 		</Context.Provider>
 	)
 }
 
 export {ContextProvider, Context}
+
+
+
+
