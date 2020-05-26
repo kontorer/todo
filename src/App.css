@@ -186,7 +186,7 @@ form button, .button, .pomooff {
 }
 
 .picker input, .react-date-picker__inputGroup__input {
-  font-size: 16px;
+  font-size: 14px;
   padding: 0;
   margin: 0;
 }
@@ -213,7 +213,10 @@ button.react-date-picker__calendar-button {
   background: #fafafa;
   padding: 5px;
   text-align: center;
+}
 
+button.is-today {
+  background: #e1e6f2;
 }
 
 .is-disabled::after {
@@ -230,3 +233,22 @@ button.react-date-picker__calendar-button {
   display: none;
 }
 
+.calendar-month_header {
+  display: flex;
+  margin: 30px 0 20px;
+}
+
+.calendar-month_header * {
+  border: none;
+  background: none;
+  margin-right: 15px;
+}
+
+
+.ri-delete-bin-line {
+  position: absolute;
+  display: inline-block;
+  right: 70px;
+  bottom: 30px;
+  cursor: pointer;
+}

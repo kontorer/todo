@@ -6,7 +6,7 @@ import Form from "./Form"
 
 function TodoInfo() {
 	const {elId} = useParams()
-	const {items} = useContext(Context)
+	const {items, deleteItem} = useContext(Context)
 
 	function form(){
 		const a = items.find(el => el.id == elId)
@@ -20,6 +20,7 @@ function TodoInfo() {
 		<div>
 			<h1>Task details</h1>
 			{form()}
+			<i className="ri-delete-bin-line ri-2x" onClick={e => deleteItem(elId)}></i>
 		</div>
 	)
 }

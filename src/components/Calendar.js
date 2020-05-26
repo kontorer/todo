@@ -13,10 +13,13 @@ function Calendar() {
 
 	return (
 		<div className={"calendar"}>
+			<h1>Calendar</h1>
 			<SimpleReactCalendar 
 				activeMonth={new Date()} 
 				disabledIntervals={dates} 
-				onDayHover={e => <div>cnjwrnfr</div>} />
+				onDayHover={e => <h1>cnjwrnfr</h1>} 
+				headerNextArrow={">"}
+				headerPrevArrow={"<"} />
 		</div>
 	)
 }

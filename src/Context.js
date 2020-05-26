@@ -77,8 +77,11 @@ function ContextProvider(props) {
 		setItems(upd)
 	}
 
-	function deleteItem() {
-		console.log("deleting")
+	function deleteItem(id) {
+		const conf = window.confirm("Delete this task?")
+		if(conf) {
+			console.log(7)
+		}
 	}
 
 	function flipHot(id) {
