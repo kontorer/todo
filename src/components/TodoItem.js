@@ -15,7 +15,7 @@ function TodoItem(props) {
 					<input type="checkbox" checked onChange={() => flipDone(id)} /> : 
 					<input type="checkbox" onChange={() => flipDone(id)} />
 				}
-				<p>{title}</p>
+				<Link to={`/todo/${id}`}><p>{title}</p></Link>
 			</div>
 			<div><Link to={`/todo/${id}`}><i className="ri-information-line"></i></Link></div>	
 		</div>

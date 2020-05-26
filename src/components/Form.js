@@ -43,7 +43,6 @@ function Form(props) {
 				placeholder="Describe your task" 
 				rows="15"
 			/>
-			<br /><br />
 
 			{!props.status &&
 				<ul>
