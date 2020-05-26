@@ -2,11 +2,11 @@
   "todosDB": [
     {
       "id": 1,
-      "title": "Take out the trash (Nata)",
+      "title": "Take out the trash",
       "isDone": false,
-      "isHot": false,
+      "isHot": true,
       "description": "This is todos descr",
-      "deadline": "time",
+      "deadline": null,
       "performer": "Olina",
       "performerInfo": "me@gmail.com"
     },
@@ -16,7 +16,7 @@
       "isDone": true,
       "isHot": false,
       "description": "This is todos descr",
-      "deadline": "time",
+      "deadline": null,
       "performer": "Natasha",
       "performerInfo": "me@gmail.com"
     },
@@ -26,7 +26,7 @@
       "isDone": false,
       "isHot": false,
       "description": "This is todos descr",
-      "deadline": "time",
+      "deadline": null,
       "performer": "Max",
       "performerInfo": "me@gmail.com"
     },
@@ -36,7 +36,7 @@
       "isDone": false,
       "isHot": true,
       "description": "This is todos dejncfjksefscr",
-      "deadline": "time",
+      "deadline": null,
       "performer": "Oksana",
       "performerInfo": "me@gmail.com"
     },
@@ -46,7 +46,7 @@
       "isDone": false,
       "isHot": false,
       "description": "This is todos descr",
-      "deadline": "time",
+      "deadline": null,
       "performer": "Kusya",
       "performerInfo": "me@gmail.com"
     },

@@ -1,17 +1,17 @@
 import React, {useState, useRef, useEffect, useContext} from "react"
+import DatePicker from 'react-date-picker'
 
 import {Context} from "../Context"
 
 function Form(props) {
 	const inputField = useRef(null)
 	const {id, title, description, deadline, performer, performerInfo, isDone, isHot} = props.task
-	const {editItem, flipHot, flipDone, updateDB} = useContext(Context)
+	const {editItem, flipHot, flipDone, updateDB, setDeadl} = useContext(Context)
 
 	useEffect(() => {
 		props.status == "new" && inputField.current.focus()
 		return () => {
 			props.status != "new" && updateDB(id)
-			console.log("unmounting", id)
 		}
 	}, [id])
 
@@ -19,8 +19,6 @@ function Form(props) {
 		e.preventDefault()
 		alert(title)
 	}
-
-	console.log(id || props.status)
 
 	return (
 		<form id="form" className={props.status}>
@@ -45,12 +43,27 @@ function Form(props) {
 				placeholder="Describe your task" 
 				rows="15"
 			/>
+			<br /><br />
 
-			<ul>
-				<li style={{display: "inline-flex"}}>add deadline</li><span>  </span>
-				<li style={{display: "inline-flex"}}>{performer ? performer : "add performer"}</li>
-			</ul>
+			{!props.status &&
+				<ul>
+					{deadline == "" || deadline == null ? 
+					<li style={{display: "inline-flex", marginLeft: -30}} onClick={e => setDeadl(new Date(), (id || props.status))}>add deadline</li> :
+					<li className="picker">
+						<span>Deadline: </span>
+						<DatePicker 
+							name="deadline"
+							onChange={e => setDeadl(e, (id || props.status))}
+							value={deadline}
+						/>
+
+					</li>
+				}
+					<li style={{display: "inline-flex", marginLeft: 10}}>{performer ? performer : "add performer"}</li>
+				</ul>
+			}
 			{props.addItem && <button onClick={e => props.addItem(e)}>Create</button>}
+			
 		</form>
 	)
 }

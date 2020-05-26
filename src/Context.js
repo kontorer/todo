@@ -10,19 +10,21 @@ const axios = require('axios')
 function ContextProvider(props) {
 	const [items, setItems] = useState([])
 	const [ignored, forceUpdate] = useReducer(x => x + 1, 0)
+	const [notes, setNotes] = useState("")
 	const history = useHistory()
 
 	useEffect(() => {
-		axios.get('http://localhost:3001/todosDB')
-		    .then(resp => {
-		        const data = resp.data
-		        setItems(data)
-		        console.log("connected")
-		    })
-		    .catch(error => {
-		        console.log(error)
 		        setItems(todosData)
-		    })
+		// axios.get('http://localhost:3001/todosDB')
+		//     .then(resp => {
+		//         const data = resp.data
+		//         setItems(data)
+		//         console.log("connected")
+		//     })
+		//     .catch(error => {
+		//         console.log(error)
+		//         setItems(todosData)
+		//     })
 	}, [])
 
 	function addItem(e) {
@@ -52,12 +54,23 @@ function ContextProvider(props) {
 	}
 
 	function editItem(e, id) {
-		console.log("editing", e.target.name, id)
 		const {name, value} = e.target
 		const updated = items
 		const upd = updated.map(el => {
 			if(el.id == id){
 				el[name] = value
+			}
+			return el
+		})
+		setItems(upd)
+	}
+
+	function setDeadl(e, id){
+		const updated = items
+		const upd = updated.map(el => {
+			if(el.id == id){
+				el.deadline = e
+				console.log(e)
 			}
 			return el
 		})
@@ -102,7 +115,7 @@ function ContextProvider(props) {
 	}
 
 	return (
-		<Context.Provider value={{items, addItem, editItem, deleteItem, flipDone, flipHot, updateDB}}>
+		<Context.Provider value={{items, addItem, editItem, deleteItem, flipDone, flipHot, updateDB, setDeadl, notes, setNotes}}>
 			{props.children}
 		</Context.Provider>
 	)

@@ -77,6 +77,9 @@ footer {
   width: 100%;
   position: absolute;
   overflow: hidden;
+  color: white;
+  padding: 5px 10px;
+  line-height: 1px;
 }
 
 .hot {
@@ -93,7 +96,7 @@ footer {
   position: relative;
 }
 
-#form input {
+form input {
   font-size: 24px;
   font-weight: 600;
   padding: 5px;
@@ -145,4 +148,52 @@ footer {
   position: relative;
   top: 25%;
   margin: 5px;
+}
+
+form button, .button, .pomooff {
+  width: 70px;
+  height: 30px;
+  border: 2px solid #194;
+  background: #3b7;
+  color: white;
+  letter-spacing: 1px;
+  /*background: rgba(140, 50, 14, 0.5);*/
+  border-radius: 15px;
+}
+
+.pomoon {
+  border: 2px solid #941;
+  background: #b73;
+}
+
+.reset {  
+  border: 2px solid #914;
+  background: #b37;
+  margin-left: 15px;
+}
+
+.picker button {
+  width: 8px;
+  height: 15px;
+  color: black;
+  padding: 0;
+  margin-top: 3px;
+}
+
+.react-calendar__navigation {
+  height: 15px;
+}
+
+.picker input, .react-date-picker__inputGroup__input {
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+.picker * {
+  border: none;
+}
+
+button.react-date-picker__calendar-button {
+  display: none;
 }

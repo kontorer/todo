@@ -5,7 +5,7 @@ const todosData = [
         "isDone": false,
         "isHot": false,
         "description": "This is todos descr",
-        "deadline": "time",
+        "deadline": "",
         "performer": "Olina",
         "performerInfo": "me@gmail.com"
     },
@@ -15,7 +15,7 @@ const todosData = [
         "isDone": true,
         "isHot": false,
         "description": "This is todos descr",
-        "deadline": "time",
+        "deadline": "",
         "performer": "Natasha",
         "performerInfo": "me@gmail.com"
     },
@@ -25,7 +25,7 @@ const todosData = [
         "isDone": false,
         "isHot": false,
         "description": "This is todos descr",
-        "deadline": "time",
+        "deadline": "",
         "performer": "Max",
         "performerInfo": "me@gmail.com"
     },
@@ -35,7 +35,7 @@ const todosData = [
         "isDone": false,
         "isHot": true,
         "description": "This is todos descr",
-        "deadline": "time",
+        "deadline": "",
         "performer": "Oksana",
         "performerInfo": "me@gmail.com"
     },
@@ -45,7 +45,7 @@ const todosData = [
         "isDone": false,
         "isHot": false,
         "description": "This is todos descr",
-        "deadline": "time",
+        "deadline": "",
         "performer": "Kusya",
         "performerInfo": "me@gmail.com"
     },
