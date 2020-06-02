@@ -14,24 +14,24 @@ function ContextProvider(props) {
 	const history = useHistory()
 
 	useEffect(() => {
+		        // setItems(todosData)
+		axios.get('http://localhost:3001/todosDB')
+		    .then(resp => {
+		        const data = resp.data
+		        setItems(data)
+		        console.log("connected")
+		    })
+		    .catch(error => {
+		        console.log(error)
 		        setItems(todosData)
-		// axios.get('http://localhost:3001/todosDB')
-		//     .then(resp => {
-		//         const data = resp.data
-		//         setItems(data)
-		//         console.log("connected")
-		//     })
-		//     .catch(error => {
-		//         console.log(error)
-		//         setItems(todosData)
-		//     })
+		    })
 	}, [])
 
 	function addItem(e) {
 		e.preventDefault()
 		console.log("addingItem")
 		const task = items.find(el => el.id == "new")
-		task.id = items.length 
+		task.id = new Date().valueOf()
 		items.push({   
 	        "id": "new",
 	        "title": "",
@@ -80,8 +80,48 @@ function ContextProvider(props) {
 	function deleteItem(id) {
 		const conf = window.confirm("Delete this task?")
 		if(conf) {
-			console.log(7)
+			const elem = document.querySelector(`.elem${id}`)
+			elem.classList.add("hideme")
+			const deleting = items.find(el => el.id == id)
+			const upd = items
+			upd.splice(items.indexOf(deleting), 1)
+			setItems(upd)
+			// axios.delete(`http://localhost:3001/todosDB/${id}`)
+			//     .then(resp => {
+			//         console.log(resp.data)
+			//     }).catch(error => {
+			//         console.log(error)
+			//     })
+			// const upd = items.map(el => {
+			// 	if(el.id > id){
+			// 		el.id = el.id - 1
+			// 	}
+			// 	return el
+			// })
+			// history.push(`/`)
+			// setItems(upd)
+			history.push(`/`)
+			axios.delete(`http://localhost:3001/todosDB/${id}`)
+				.then(resp => {
+					console.log(resp.data)
+				}).catch(error => {
+				   	console.log(error)
+				})
+			// items.forEach(item => {
+			// 	if(item.id > id){
+			// 		const itemid = item.id
+			// 		item.id -= 1
+			// 		axios.patch(`http://localhost:3001/todosDB/${itemid}`, item)
+			// 			.then(resp => {
+			// 			    console.log(resp.data)
+			// 			}).catch(error => {
+
+			// 			    console.log(error)
+			// 			})
+			// 	}
+			// })
 		}
+		console.log(items)
 	}
 
 	function flipHot(id) {
@@ -114,7 +154,7 @@ function ContextProvider(props) {
 			}).catch(error => {
 
 			    console.log(error)
-			}); 
+			})
 	}
 
 	return (
@@ -125,3 +165,26 @@ function ContextProvider(props) {
 }
 
 export {ContextProvider, Context}
+
+
+// history.push(`/`)
+// axios.delete(`http://localhost:3001/todosDB/${id}`)
+// 	.then(resp => {
+// 		console.log(resp.data)
+// 	}).catch(error => {
+// 	   	console.log(error)
+// 	})
+// items.foreach(item => {
+// 	if(item.id > id){
+// 		const itemid = item.id
+// 		item.id -= 1
+// 		axios.put(`http://localhost:3001/todosDB/${itemid}`, item)
+// 			.then(resp => {
+// 			    console.log(resp.data)
+// 			}).catch(error => {
+
+// 			    console.log(error)
+// 			})
+// 	}
+// })
+

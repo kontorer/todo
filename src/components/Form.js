@@ -15,10 +15,6 @@ function Form(props) {
 		}
 	}, [id])
 
-	function handleSubmit(e) {
-		e.preventDefault()
-		alert(title)
-	}
 
 	return (
 		<form id="form" className={props.status}>
@@ -27,6 +23,7 @@ function Form(props) {
 				name="title"
 				onChange={e => editItem(e, (id || props.status))} 
 				ref={inputField}
+				required
 			/>
 
 			<label>
@@ -47,7 +44,7 @@ function Form(props) {
 			{!props.status &&
 				<ul>
 					{deadline == "" || deadline == null ? 
-					<li style={{display: "inline-flex", marginLeft: -30}} onClick={e => setDeadl(new Date(), (id || props.status))}>add deadline</li> :
+					<li style={{display: "inline-flex", marginLeft: -30}} onClick={e => setDeadl(new Date(), (id || props.status))}>add deadline  </li> :
 					<li className="picker">
 						<span>Deadline: </span>
 						<DatePicker 
@@ -58,7 +55,15 @@ function Form(props) {
 
 					</li>
 				}
-					<li style={{display: "inline-flex", marginLeft: 10}}>{performer ? performer : "add performer"}</li>
+					<li style={{display: "inline-flex", marginLeft: 10}}>
+						<i class="ri-user-follow-line"></i> 
+						<input type="text" 
+							value={performer} 
+							name="performer"
+							className="regular"
+							onChange={e => editItem(e, (id || props.status))} 
+						/>
+					</li>
 				</ul>
 			}
 			{props.addItem && <button onClick={e => props.addItem(e)}>Create</button>}

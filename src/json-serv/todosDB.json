@@ -16,7 +16,7 @@
       "isDone": true,
       "isHot": false,
       "description": "This is todos descr",
-      "deadline": null,
+      "deadline": "2020-06-09T21:00:00.000Z",
       "performer": "Natasha",
       "performerInfo": "me@gmail.com"
     },
@@ -36,7 +36,7 @@
       "isDone": false,
       "isHot": true,
       "description": "This is todos dejncfjksefscr",
-      "deadline": null,
+      "deadline": "2020-06-09T21:00:00.000Z",
       "performer": "Oksana",
       "performerInfo": "me@gmail.com"
     },
@@ -52,7 +52,7 @@
     },
     {
       "id": "new",
-      "title": "New item with full fu",
+      "title": "",
       "isDone": false,
       "isHot": false,
       "description": "",
@@ -61,8 +61,8 @@
       "performerInfo": "me@gmail.com"
     },
     {
-      "id": 6,
-      "title": "Hey hello",
+      "id": 1591087424958,
+      "title": "оомду",
       "isDone": false,
       "isHot": false,
       "description": "",

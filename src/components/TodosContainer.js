@@ -18,7 +18,7 @@ function TodosContainer() {
 					<Link to="/"><i className="ri-add-circle-fill ri-2x"></i></Link>
 				</span>
 			</div>			
-			{todos}
+			{todos.length > 1 ? todos : "Let's add your first task"}
 		</div>
 	)
 }

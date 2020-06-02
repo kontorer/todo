@@ -252,3 +252,14 @@ button.is-today {
   bottom: 30px;
   cursor: pointer;
 }
+
+.hideme {
+  display: none;
+}
+
+#form .regular {
+  border: none;
+  background: none;
+  font-size: 14px;
+  font-weight: 400;
+}

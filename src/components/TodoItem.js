@@ -9,7 +9,7 @@ function TodoItem(props) {
 	const {id, title, description, deadline, performer, isDone, isHot} = items.find(el => el.id == props.id)
 
 	return (
-		<div className={"flex"}>
+		<div className={`flex elem${id}`}>
 			<div className={`elem ${isDone && "done"} ${isHot && (!isDone && "hot")}`}>
 				{isDone == true ? 
 					<input type="checkbox" checked onChange={() => flipDone(id)} /> : 
