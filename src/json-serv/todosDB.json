@@ -36,7 +36,7 @@
       "isDone": false,
       "isHot": true,
       "description": "This is todos dejncfjksefscr",
-      "deadline": "2020-06-09T21:00:00.000Z",
+      "deadline": null,
       "performer": "Oksana",
       "performerInfo": "me@gmail.com"
     },
@@ -53,16 +53,6 @@
     {
       "id": "new",
       "title": "",
-      "isDone": false,
-      "isHot": false,
-      "description": "",
-      "deadline": "",
-      "performer": "Olina",
-      "performerInfo": "me@gmail.com"
-    },
-    {
-      "id": 1591087424958,
-      "title": "оомду",
       "isDone": false,
       "isHot": false,
       "description": "",

@@ -46,6 +46,7 @@ function Pomodoro() {
 			</button>
 			<button 
 				onClick={() => {
+					setProdOn(false)
 					setTime(workTime)
 					setMod("Work")
 				}}

@@ -86,20 +86,6 @@ function ContextProvider(props) {
 			const upd = items
 			upd.splice(items.indexOf(deleting), 1)
 			setItems(upd)
-			// axios.delete(`http://localhost:3001/todosDB/${id}`)
-			//     .then(resp => {
-			//         console.log(resp.data)
-			//     }).catch(error => {
-			//         console.log(error)
-			//     })
-			// const upd = items.map(el => {
-			// 	if(el.id > id){
-			// 		el.id = el.id - 1
-			// 	}
-			// 	return el
-			// })
-			// history.push(`/`)
-			// setItems(upd)
 			history.push(`/`)
 			axios.delete(`http://localhost:3001/todosDB/${id}`)
 				.then(resp => {
@@ -107,19 +93,6 @@ function ContextProvider(props) {
 				}).catch(error => {
 				   	console.log(error)
 				})
-			// items.forEach(item => {
-			// 	if(item.id > id){
-			// 		const itemid = item.id
-			// 		item.id -= 1
-			// 		axios.patch(`http://localhost:3001/todosDB/${itemid}`, item)
-			// 			.then(resp => {
-			// 			    console.log(resp.data)
-			// 			}).catch(error => {
-
-			// 			    console.log(error)
-			// 			})
-			// 	}
-			// })
 		}
 		console.log(items)
 	}

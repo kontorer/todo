@@ -24,6 +24,7 @@ function Form(props) {
 				onChange={e => editItem(e, (id || props.status))} 
 				ref={inputField}
 				required
+				maxLength="50"
 			/>
 
 			<label>
@@ -56,7 +57,7 @@ function Form(props) {
 					</li>
 				}
 					<li style={{display: "inline-flex", marginLeft: 10}}>
-						<i class="ri-user-follow-line"></i> 
+						<i className="ri-user-follow-line"></i> 
 						<input type="text" 
 							value={performer} 
 							name="performer"
